@@ -94,6 +94,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         //define validation rules
         $validator = Validator::make($request->all(), [
             'title'     => 'required',
