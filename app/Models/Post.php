@@ -19,6 +19,8 @@ class Post extends Model
         'image',
         'title',
         'content',
+        'nama_penulis',
+        'divisi_penulis'
     ];
 
     /**

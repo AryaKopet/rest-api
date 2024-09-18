@@ -48,6 +48,8 @@ class PostController extends Controller
             'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title'     => 'required',
             'content'   => 'required',
+            'nama_penulis' => 'required',
+            'divisi_penulis' => 'required'
         ]);
 
         //check if validation fails
@@ -64,6 +66,8 @@ class PostController extends Controller
             'image'     => $image->hashName(),
             'title'     => $request->title,
             'content'   => $request->content,
+            'nama_penulis' => $request->nama_penulis,
+            'divisi_penulis' => $request->divisi_penulis
         ]);
 
         //return response
