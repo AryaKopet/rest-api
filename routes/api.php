@@ -10,3 +10,7 @@ Route::get('/user', function (Request $request) {
 
 //posts
 Route::apiResource('/posts', App\Http\Controllers\Api\PostController::class);
+Route::post('/persegi', [App\Http\Controllers\Api\PersegiController::class,
+        'hitungPersegi']);
+Route::post('/segitiga', [App\Http\Controllers\Api\SegitigaController::class,
+        'hitungSegitiga']);

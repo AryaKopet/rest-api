@@ -84,10 +84,20 @@ class PostController extends Controller
     {
         //find post by ID
         $post = Post::find($id);
-
+    
+        //check if post exists
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Maaf data tidak tersedia',
+                'data' => null,
+            ], 404);
+        }
+    
         //return single post as a resource
         return new PostResource(true, 'Detail Data Post!', $post);
     }
+    
 
     /**
      * update
@@ -98,32 +108,45 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         //define validation rules
         $validator = Validator::make($request->all(), [
             'title'     => 'required',
             'content'   => 'required',
         ]);
-
+    
         //check if validation fails
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation errors',
+                'data'    => $validator->errors(),
+            ], 422);
         }
-
+    
         //find post by ID
         $post = Post::find($id);
-
+    
+        //check if post exists
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'woilah cik data nya gada loh ya 😹',
+                'data'    => null,
+            ], 404);
+        }
+    
         //check if image is not empty
         if ($request->hasFile('image')) {
-
+    
             //upload image
             $image = $request->file('image');
             $image->storeAs('public/posts', $image->hashName());
-
-            //delete old image
-            Storage::delete('public/posts/' . basename($post->image));
-
+    
+            //delete old image if exists
+            if ($post->image) {
+                Storage::delete('public/posts/' . basename($post->image));
+            }
+    
             //update post with new image
             $post->update([
                 'image'     => $image->hashName(),
@@ -131,17 +154,17 @@ class PostController extends Controller
                 'content'   => $request->content,
             ]);
         } else {
-
             //update post without image
             $post->update([
                 'title'     => $request->title,
                 'content'   => $request->content,
             ]);
         }
-
+    
         //return response
         return new PostResource(true, 'Data Post Berhasil Diubah!', $post);
     }
+    
     
     /**
      * destroy

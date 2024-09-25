@@ -1,0 +1,1 @@
+setting host local api : php artisan serve --host 192.168.().() --port 8080
