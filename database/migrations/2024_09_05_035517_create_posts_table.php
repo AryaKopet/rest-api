@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('title');
             $table->text('content');
+            $table->text('nama_penulis');
+            $table->text('divisi_penulis');
             $table->timestamps();
         });
     }
