@@ -22,6 +22,8 @@ class PendaftaranMahasiswaResource extends JsonResource
             'jenis_kelamin' => $this->jenis_kelamin,
             'alamat' => $this->alamat,
             'program_studi' => $this->program_studi,
+            'email' => $this->email,
+            'no_telepon' => $this->no_telepon,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'), 
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s'), 
         ];

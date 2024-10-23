@@ -19,6 +19,8 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->text('alamat');
             $table->string('program_studi');
+            $table->string('email');
+            $table->string('no_telepon');
             $table->timestamps();
         });
     }

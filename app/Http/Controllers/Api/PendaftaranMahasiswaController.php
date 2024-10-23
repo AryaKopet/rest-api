@@ -28,6 +28,8 @@ class PendaftaranMahasiswaController extends Controller
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'alamat' => 'required|string',
             'program_studi' => 'required|string',
+            'email' => 'required|string',
+            'no_telepon' => 'required|string',
         ]);
     
         //handle eror validasi data
@@ -43,6 +45,8 @@ class PendaftaranMahasiswaController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'program_studi' => $request->program_studi,
+            'email' => $request->email,
+            'no_telepon' => $request->no_telepon,
         ]);
     
         //return response
@@ -69,6 +73,8 @@ class PendaftaranMahasiswaController extends Controller
             'jenis_kelamin' => 'sometimes|required|in:Laki-laki,Perempuan',
             'alamat' => 'sometimes|required|string',
             'program_studi' => 'sometimes|required|string',
+            'email' => 'sometimes|required|string',
+            'no_telepon' => 'sometimes|required|string',
         ]);
         $mahasiswa = PendaftaranMahasiswa::findOrFail($id);
         $mahasiswa->update($request->all());

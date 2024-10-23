@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PendaftaranMahasiswa extends Model
 {
     use HasFactory;
-    
+
     // Tentukan field yang dapat diisi
     protected $fillable = [
         'nama',
@@ -16,6 +16,8 @@ class PendaftaranMahasiswa extends Model
         'tanggal_lahir',
         'jenis_kelamin',
         'alamat',
-        'program_studi'
+        'program_studi',
+        'email',
+        'no_telepon'
     ];
 }
